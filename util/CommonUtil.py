@@ -63,6 +63,15 @@ def random_int( min:int, max:int):
 
     return random.randint(min_value,max_value)
 
+def is_in_range(min_value:float, max_value:float,value:float):
+    in_range=False
+    min_v=min(min_value,max_value)
+    max_v=max(min_value,max_value)
+    if value>=min_v and value<=max_v:
+        in_range=True
+
+    return in_range
+
 if __name__ == '__main__':
     value=float(0.00000001)
     print(is_zero(value))
