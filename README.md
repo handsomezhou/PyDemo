@@ -39,4 +39,5 @@ A:
     
     database/PyDemoSqliteSql.py-> database/PythonDemoSqliteSql.py
     PyDemo.py -> PythonDemo.py
+    PyDemo.ico -> PythonDemo.ico
     file_version_info.py 中 CompanyName  FileDescription FileVersion filevers prodvers

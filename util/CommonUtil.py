@@ -42,6 +42,17 @@ def get_bool_value(value:str):
 
     return bool_value
 
+def get_int_value(value:str):
+    int_value=None
+    if value is None:
+        return int_value
+    try:
+        int_value=int(value)
+    except Exception as e:
+        print("get_int_value(",value,") Exception:",str(e))
+
+    return int_value
+
 def get_asterisk(value:str):
     asterisk=Constant.NULL_STRING
     if value is None:
@@ -76,3 +87,5 @@ if __name__ == '__main__':
     value=float(0.00000001)
     print(is_zero(value))
     print(is_zero(0.000000001))
+    value=get_int_value("12")
+    print(value,type(value))

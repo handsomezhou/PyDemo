@@ -116,6 +116,17 @@ class PyDemoSqliteSql:
         self.insert_table_setting_data(id,key,str(value))
         return
 
+    def set_table_setting_int_value(self,key:str, value:int):
+        id=TimeUtil.getCurrentTimeMillis()
+        self.insert_table_setting_data(id,key,str(value))
+        return
+
+    def get_table_setting_int_value(self,key:str):
+        value=None
+        v=self.load_setting_value(key)
+        value=CommonUtil.get_int_value(v)
+        return value
+
     def get_table_setting_bool_value(self,key:str):
         value=None
         v=self.load_setting_value(key)
