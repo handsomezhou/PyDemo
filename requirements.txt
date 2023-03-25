@@ -2,3 +2,4 @@ psutil
 pyinstaller
 requests
 wmi
+apscheduler

@@ -1,5 +1,5 @@
 #PyDemo
-PyDemo
+PyDemo(Windows版) PyDemoNoUi(无限制版)
 
 #编译
 pyinstaller  -F  PyDemo.py
