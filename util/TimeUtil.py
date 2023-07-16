@@ -171,24 +171,18 @@ def get_month_of_year():
 def get_year():
     return datetime.now().year
 
-"""
-Python进行时间戳转换为标准时间 https://blog.csdn.net/ncut_wxj/article/details/108011326
-"""
-def get_the_day_start_time_ms(time_ms):
-    struct_time = time.localtime(ms2sec(time_ms))  # 得到结构化时间格式
+def get_the_day_start_time_ms(time_ms:int):
+    # 将毫秒值转化为datetime对象  // 是 Python 中的整数除法操作符，表示对两个数进行相除后向下取整得到的整数部分
+    dt = datetime.fromtimestamp(time_ms // MILLISECOND_PER_SECOND)
 
-    min=hour2min(struct_time.tm_hour)+struct_time.tm_min
+    # 获取当天的开始时间
+    start_of_day = dt.replace(hour=0, minute=0, second=0, microsecond=0)
 
-
-    the_day_start_time_ms=(math.floor(time_ms /MILLISECOND_PER_SECOND / SECOND_PER_MINUTE)-min)* MILLISECOND_PER_SECOND * SECOND_PER_MINUTE
-    #print("tm_hour",struct_time.tm_hour)
-    #print("tm_min",struct_time.tm_min)
-    #print("min ",min)
-
-    #print("the_day_start_time_ms",the_day_start_time_ms)
-    #print("get_log_time_by_ms",get_log_time_by_ms(the_day_start_time_ms))
+    # 将开始时间转换回毫秒值
+    the_day_start_time_ms = int(start_of_day.timestamp() * MILLISECOND_PER_SECOND)
 
     return the_day_start_time_ms
+
 def get_the_day_end_time_ms(time_ms):
     the_day_end_time_ms=get_the_day_start_time_ms(time_ms)+hour2ms(24)
 
@@ -262,6 +256,13 @@ if __name__ == "__main__":
     #
     # get_the_day_start_time_ms(getCurrentTimeMillis())
     # get_the_day_end_time_ms(getCurrentTimeMillis())
+
+    the_day_start_time_ms=get_the_day_start_time_ms(getCurrentTimeMillis())
+    print("the_day_start_time_ms",the_day_start_time_ms,get_log_time_by_ms(the_day_start_time_ms))
+
+    the_day_end_time_ms=get_the_day_end_time_ms(getCurrentTimeMillis())
+    print("the_day_end_time_ms",the_day_end_time_ms,get_log_time_by_ms(the_day_end_time_ms))
+
     date_string = getLogTime()
     format = TimePatternConstant.YEAR_TO_SEC
     print("date_string", date_string, "format", format)
